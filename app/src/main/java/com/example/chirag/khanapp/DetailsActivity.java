@@ -38,7 +38,6 @@ public class DetailsActivity extends AppCompatActivity {
             return;
         }
 
-        Log.v("VIEW", "setting values");
         ImageView mainImage = (ImageView) findViewById(R.id.main_image);
         TextView mainName = (TextView) findViewById(R.id.name);
         TextView mainDescription = (TextView) findViewById(R.id.extended_description);
