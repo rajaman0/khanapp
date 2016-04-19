@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#4FC3F7"
+
+    >
+
+
+    <ImageView
+        android:id="@+id/main_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="0dp"
+        android:padding="10dp"
+        android:background="#81D4FA"
+        />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:background="#29B6F6"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="40dp"
+        android:text="Name"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            >
+            <TextView
+                android:id="@+id/extended_description"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="40dp"
+                android:paddingBottom="5dp"
+                android:text="Extended description"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                />
+            <TextView
+                android:id="@+id/points"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="40dp"
+                android:text="Points: "
+                android:textSize="17sp"
+                android:textColor="#FFFFFF"
+
+                />
+
+            <TextView
+                android:id="@+id/points"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:background="#29B6F6"
+                android:text="Category"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#4FC3F7"
+
+                >
+
+                <ImageView
+                    android:id="@+id/category_image"
+                    android:padding= "10dp"
+                    android:layout_width="135dp"
+                    android:layout_height="135dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+
+                    >
+                    <TextView
+                        android:id="@+id/category_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="17sp"
+                        android:text="Sample"
+                        android:textColor="#FFFFFF"
+                        />
+
+                    <TextView
+                        android:id="@+id/category_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="17sp"
+                        android:text="Sample"
+                        android:paddingTop="8dp"
+                        android:textColor="#FFFFFF"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

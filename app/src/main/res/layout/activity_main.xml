@@ -8,7 +8,6 @@
     android:numColumns="3"
     android:gravity="center"
     android:scrollbars="vertical"
-    android:padding="16dp"
     android:columnWidth="100dp">
 
 
