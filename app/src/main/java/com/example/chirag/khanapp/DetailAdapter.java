@@ -19,12 +19,15 @@ import java.util.List;
 
 /**
  * Created by Chirag on 4/18/2016.
+ * Basic adapter that populates the GridView using JSON objects passed from the main
+ * activity.
  */
 public class DetailAdapter extends BaseAdapter {
 
     public List<JSONObject> items;
     private Context mContext;
 
+    /*List <JSONObject> items is the list that contains all the badge information. */
     public DetailAdapter(Context context, List<JSONObject> items) {
         mContext = context;
         this.items = items;
@@ -45,8 +48,12 @@ public class DetailAdapter extends BaseAdapter {
         return items.get(position);
     }
 
+
     public View getView(int position, View convertView, ViewGroup parent){
         View v = convertView;
+
+        //no need to reinflate the view every time, only on instantiation.
+        //(standard practice that improves performance)
         if (v == null) {
             LayoutInflater vi;
             vi = LayoutInflater.from(mContext);
@@ -57,11 +64,11 @@ public class DetailAdapter extends BaseAdapter {
 
 
         if (obj != null){
-            Log.v("VIEW", "setting values");
             ImageView smallImage = (ImageView) v.findViewById(R.id.imgThumbnail);
             TextView tv = (TextView) v.findViewById(R.id.description);
 
             String img, name;
+            //parses the JSON to get the badge name and url for the image.
             try {
                 img = obj.getJSONObject("icons").getString("email");
                 name = obj.getString("description");
@@ -72,11 +79,12 @@ public class DetailAdapter extends BaseAdapter {
                 name = "Default";
             }
 
+            //Uses Picasso image library to load and cache image for great performance.
             if (smallImage != null){
-                Log.v("VIEW", "setting image");
-
                 Picasso.with(mContext).load(img).into(smallImage);
             }
+
+            //sets the text view
             if (tv != null){
                 tv.setText(name);
             }

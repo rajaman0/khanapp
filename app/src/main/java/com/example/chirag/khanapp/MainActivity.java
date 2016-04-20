@@ -24,6 +24,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+/* Chirag Toprani
+ * 4/18
+ * MainActivity that runs KhanApp. Displays Gridview of various badges, allows user
+ * to select a badge and look at the detailed view.
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<JSONObject> badges = new ArrayList<JSONObject>(12);
@@ -41,11 +47,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         gridView = (GridView) findViewById(R.id.gridview);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         populateBadges();
     }
 
+    /*
+     * This method uses HTML get requests to get the JSON objects from the Khan Academy API.
+     * Uses Volley, a popular HTML query library.
+     *
+     * On successful queries, calls the setUpGridView method, passing it the response string,
+     * and allows the setUpGridView method to populate the GridView on the main activity.
+     */
     public void populateBadges(){
         RequestQueue queue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, BADGE_URL,
@@ -79,6 +91,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /* This method parses the JSON and creates a JSONObject for each badge.
+     * It adds this object to an ArrayList, which is in turn passed to the
+     * GridView adapter to set the GridView up.
+     * It also listens for user clicks, upon which it activates a detail view
+     * activity through an intent (also passing the relevant JSON through a Bundle).
+     */
+
     public void setUpGridView(String response){
         JSONArray badgeArrayJSON;
         try {
@@ -99,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                     b.putString("Badge", badges.get(position).toString());
                     intent.putExtras(b);
 
+                    //creates the back stack for back button navigation
                     PendingIntent pendingIntent =
                             TaskStackBuilder.create(getApplicationContext())
                                     // add all of DetailsActivity's parents to the stack,
@@ -108,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
 
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext());
                     builder.setContentIntent(pendingIntent);
+
+                    //starts DetailsActivity
                     startActivity(intent);
 
                 }
@@ -118,11 +140,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /* Allows for automatic scrolling to previous position when the user navigates back from
+     * the detail activity or after the user minimizes the application */
+
     public void onResume(){
         super.onResume();
         Log.v("TAG", "selection is " + index);
         gridView.setSelection(index);
     }
+
+    /* Saves the index when the user navigates away so when he/she navigates back the position
+     * will be saved.
+     */
 
     public void onPause(){
         super.onPause();
