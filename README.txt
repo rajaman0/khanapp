@@ -1,5 +1,4 @@
 Khan Academy Mobile Application.
-Chirag Toprani
 4/18
 
 Description: Application displays badges, allows user to click on a badge to get a more detailed view.
